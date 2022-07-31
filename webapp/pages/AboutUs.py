@@ -1,8 +1,5 @@
 import streamlit as st
 
-st.title ("GROUP NAME")
-import streamlit as st
-
 
 st.write("Hello ,let's learn how to build a streamlit app together")
 
