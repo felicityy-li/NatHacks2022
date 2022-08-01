@@ -7,14 +7,14 @@ import webbrowser
 import nltk
 import ssl
 
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    pass
-else:
-    ssl._create_default_https_context = _create_unverified_https_context
+# try:
+#     _create_unverified_https_context = ssl._create_unverified_context
+# except AttributeError:
+#     pass
+# else:
+#     ssl._create_default_https_context = _create_unverified_https_context
 
-nltk.download()
+# nltk.download()
 
 
 # Create object of ChatBot class with Logic Adapter
@@ -35,6 +35,7 @@ trainer = ChatterBotCorpusTrainer(bot)
 trainer.train("chatterbot.corpus.english")
 trainer.train("chatterbot.corpus.english.greetings")
 trainer.train("chatterbot.corpus.english.conversations")
+
 
 class personal_info:
     def __init__(phone, prefered_music_type):
@@ -68,34 +69,40 @@ lofi_music_playlist = ['https://www.youtube.com/watch?v=81WBzpwK1Rk&ab_channel=M
 
 
 def activities():
-    response = input(
-        'Bot: Would you like to play games or listen to some music? Please type the word "music" or "games".').lower()
-    print('You: ' + str(response))
+    st.text_area(
+        'Bot:', value='Would you like to play games or listen to some music? Please type the word "music" or "games".', key=2)
+    response = st.text_input('You: ', "What's on your mind?").lower()
+    # print('You: ' + str(response))
     if any(word in response for word in ['games', 'game']):
         map(lambda game: print(webbrowser.open(game)), games_list)
     elif any(word in response for word in ['listen', 'music', 'musics']):
-        music_style_input = input(
-            'Bot: What genre of music would you like to listen to? Sounds of Nature, LoFi, Classical, or Other?').lower()
-        if any(word in response for word in ['nature', 'sounds', 'sound']):
+        st.text_area(
+            'Bot:', value='What genre of music would you like to listen to? Sounds of Nature, LoFi, Classical, or Other?', key=0)
+        music_style_input = st.text_input(
+            'You: ', "What's on your mind?").lower()
+        if any(word in music_style_input for word in ['nature', 'sounds', 'sound']):
             map(lambda playlist: print(webbrowser.open(
                 playlist)), sounds_of_nature_playlist)
-        elif any(word in response for word in ['classical', 'classic', 'instrumental']):
+        elif any(word in music_style_input for word in ['classical', 'classic', 'instrumental']):
             map(lambda playlist: print(webbrowser.open(
                 playlist)), classical_music_playlist)
-        elif any(word in response for word in ['lofi']):
+        elif any(word in music_style_input for word in ['lofi']):
             map(lambda playlist: print(
                 webbrowser.open(playlist)), lofi_music_playlist)
         else:
-            print('Bot: You can search for some songs on Youtube ' + webbrowser.open('https://www.youtube.com/') +
-                  ' or Spodify ' + webbrowser.open('https://open.spotify.com') + ' !')
+
+            st.text_area(
+                value='Bot: You can search for some songs on Youtube https://www.youtube.com/ or Spodify https://open.spotify.com !', key=1)
     else:
         activities()
 
 
+st.title('Chatbot')
+
 EEG_wave = 0
 
 # when EEG wave values are abnormal
-if EEG_wave > 100: # EEG_info.therapist_threshold:
+if EEG_wave > 100:  # EEG_info.therapist_threshold:
     print('Our system detects that you are currently really stressed and would recommend you speak to a therapist.')
     if personal_info.therpist_info == None:
         print('We recommend consulting a specalist using one of these sites:')
@@ -103,14 +110,15 @@ if EEG_wave > 100: # EEG_info.therapist_threshold:
     else:
         print(personal_info.therpist_info)
 
-elif EEG_wave > 50: # EEG_info.need_relax_threshold:
-    inputTokenized = input(
+elif EEG_wave > 50:  # EEG_info.need_relax_threshold:
+    inputTokenized = st.text_input(
         'Bot: Our system detects that you are feeling a bit stressed right now, would you like to play a game or listen to some music to de-stress?').lower()
     activities()
 
 # Chatbot testing
 while True:
-    request = input('Bot: Hello! ')
+    request = st.text_input('Bot: Hello! ')
+    print('You: ' + str(request))
     if request.lower() == 'bye':
         print('Bot: See you next time!')
         break
