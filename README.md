@@ -26,7 +26,7 @@ runn streamlit
 
 
 # How we built it
-
+We mostly programmed in VS Code while utilizing Python as the main language. PyQt5 boilerplates were used to record EEG data from Muse and openBCI hardware, which was further processed using the EEGrunt library. Our web app was built on Streamlit. It includes a journaling (user input) page, an About Us page, and an embedded Chatterbot. The libraries used for NLP were tensorflow, pandas, numpy, sklearn, nltk, tensorflow-bert, matplotlib, seaborn, Re, string, logging. We trained the BERT sentiment analysis model using logistic regression, SVM, random forest and neural networks techniques on the Dreaddit dataset. To train the model in BERT, we predicted 15% of the tokens in the training data, which were randomly picked.
 
 
 
