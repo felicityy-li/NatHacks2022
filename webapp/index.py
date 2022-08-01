@@ -36,7 +36,7 @@ def parse_youtube_link(col1,col2,col3,linkArray):
     ##return stress_count
 
 
-st.image("/Users/mac/Documents/GitHub/NatHacks2022/webapp/pictures/braincore_icons-02-e1495563799323.png")
+st.image("https://images-ext-2.discordapp.net/external/5vie2YzLq-_FaKLK0UsAx-1bMKHuMqV0tLfuoS2Mfe4/https/braincorebismarck.com/wp-content/uploads/2017/05/braincore_icons-02-e1495563799323.png")
 st.title("Neuro Journal")
 if app_mode == 'Home':
     journal_col, egg_col = st.columns([2,1.5])
