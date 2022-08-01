@@ -12,7 +12,7 @@ NeuroJournal has been working on an AI chatbot to detect stress while collecting
 
 
 
-## Running Neuro Journal
+## Running Neuro Journal 🏃
 
 download Anaconda
 * https://www.anaconda.com/products/distribution 
@@ -22,3 +22,14 @@ create a conda environment
 
 runn streamlit 
 ```streamlit run index.py```
+
+
+
+# What we built it with 🛠️
+* Streamlit.io
+* python
+* sklearn
+* tensorflow
+* tensorflow-bert
+* pyqt5
+* chatterbot
