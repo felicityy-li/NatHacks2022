@@ -38,14 +38,14 @@ def parse_youtube_link(col1,col2,col3,linkArray):
 st.image("/Users/mac/Documents/GitHub/NatHacks2022/webapp/pictures/braincore_icons-02-e1495563799323.png")
 st.title("Neuro Journal")
 if app_mode == 'Home':
+
     journal_col, egg_col = st.columns([3,1.5])
     journal = journal_col.text_area("How are you feeling?",placeholder="natHack2022 is ending in 12 hours, but I haven't finished my code!")
     clicked = journal_col.button("Close journal")
     info = egg_col.info("Press 'Start recording' when you have put on your headset")
     record_started = egg_col.button("Start recording")
     if (record_started == True):
-        egg_col.image("/Users/mac/Documents/GitHub/NatHacks2022/webapp/pictures/OpenBCI_EEGrunt_Test_Data_Channel_4_Alpha_EEG_Amplitude_Over_Time.png")
-
+        egg_col.image("https://braincorebismarck.com/wp-content/uploads/2017/05/braincore_icons-02-e1495563799323.png")
 
     if (clicked == True):
         sentences = journal.split(".")
