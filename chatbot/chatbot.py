@@ -20,9 +20,13 @@ info = ['What services are available?',
         'We offer games and music to help you relax']  # NEEDS EDIT
 
 trainer = ListTrainer(bot)
+trainer = ChatterBotCorpusTrainer(bot)
 
 for item in (conversation_starter0, conversation_starter1, info):
+    print('in for loop' + str(item))
     trainer.train(item)
+
+print('for loop done')
 
 corpus_trainer = ChatterBotCorpusTrainer(bot)
 corpus_trainer.train('chatterbot.corpus.english')
@@ -57,6 +61,8 @@ lofi_music_playlist = ['https://www.youtube.com/watch?v=81WBzpwK1Rk&ab_channel=M
                        'https://www.youtube.com/watch?v=W6YI3ZFOL0A&ab_channel=Ambition']
 
 # games and music suggestions
+
+
 def activities():
     reponse = input(
         'Bot: Would you like to play games or listen to some music?').lower()
